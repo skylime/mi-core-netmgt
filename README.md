@@ -5,6 +5,10 @@ This repository is based on [Joyent mibe](https://github.com/joyent/mibe). Pleas
 ## mdata variables
 
 - `nginx_ssl`: ssl certificate for the web interface
+- `netmgt_admin`: password for django admin user
+- `netmgt_default_nameservers`: list of default nameservers separated by space
+- `netmgt_hostmaster`: email address of hostmaster
+- `netmgt_dns_token`: dns export token
 
 ## services
 

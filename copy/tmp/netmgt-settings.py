@@ -5,8 +5,7 @@ DEBUG = False
 TEMPLATE_DEBUG = False
 
 INSTALLED_APPS = (
-	'django_admin_bootstrapped.bootstrap3',
-	'django_admin_bootstrapped',
+	'suit',
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',
@@ -25,6 +24,16 @@ MIDDLEWARE_CLASSES = (
 	'django.contrib.messages.middleware.MessageMiddleware',
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+	'django.core.context_processors.request',
+)
+
+SUIT_CONFIG = {
+	'ADMIN_NAME': 'Network Management Tool',
+	'SEARCH_URL': '',
+}
+
 
 ROOT_URLCONF = 'netmgt_web.urls'
 WSGI_APPLICATION = 'netmgt_web.wsgi.application'

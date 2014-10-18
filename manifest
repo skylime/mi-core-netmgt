@@ -1,0 +1,8 @@
+name="core-netmgt"
+organization="SkyLime"
+brand="Instance"
+version="14.2.0"
+description="core.io Network Management Tool"
+homepage="https://github.com/skylime/mi-core-netmgt"
+users="root admin"
+base="5f32cd38-4a1f-11e4-82e4-632b59542bc6"

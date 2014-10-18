@@ -2,6 +2,8 @@
 #
 # Put customizations to your image in this file.
 
+NETMGT_VERSION='0.0.2'
+
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
 # Munin plugins
@@ -18,6 +20,19 @@ set -o errexit
 # Nginx SSL folder
 echo "* Create ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
+
+# Download and extract netmgt to /opt/netmgt
+echo "* Download and extract netmgt to /opt/netmgt"
+mkdir -p /opt/netmgt
+curl -L "https://github.com/wiedi/djang-netmgt/archive/v${NETMGT_VERSION}.tar.gz" | tar xz -C /opt/netmgt --strip-components=1
+
+# Setup permissions for netmgt folder
+echo "* Setup permissions for netmgt folder"
+chown -R www:www /opt/netmgt
+
+# Install missing dependencies via pip
+echo "* Install missing dependencies via pip"
+pip install -r /opt/netmgt/req.txt
 
 # Setup gunicorn
 echo "* Setup gunicorn"

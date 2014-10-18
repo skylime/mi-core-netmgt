@@ -30,7 +30,7 @@
         <propval name='worker' type='integer' value='1'/>
       </property_group>
     </instance>
-    <instance name='netmgt' enabled='true'>
+    <instance name='netmgt' enabled='false'>
       <method_context working_directory='/opt/netmgt'>
         <method_environment>
           <envvar name='PATH' value='/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin:/bin'/>
@@ -39,7 +39,7 @@
       <property_group name='config' type='application'>
         <propval name='app' type='astring' value='netmgt_web.wsgi:application'/>
         <propval name='group' type='astring' value='www'/>
-		<propval name='listen' type='astring' value='unix:/tmp/netmgt_dns.sock'/>
+        <propval name='listen' type='astring' value='unix:/tmp/netmgt_dns.sock'/>
         <propval name='user' type='astring' value='www'/>
         <propval name='worker' type='integer' value='1'/>
       </property_group>

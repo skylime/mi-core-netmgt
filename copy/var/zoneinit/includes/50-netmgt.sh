@@ -27,6 +27,9 @@ NETMGT_DNS_TOKEN=$(od -An -N8 -x /dev/random | head -1 | tr -d ' ');
 mdata-put netmgt_dns_token ${NETMGT_DNS_TOKEN}
 
 cat >> /opt/netmgt/netmgt_web/settings.py <<EOF
+# Static files location
+STATIC_ROOT = '/opt/netmgt/static'
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = "${SECRET_KEY}"
 
@@ -54,3 +57,10 @@ if [[ ! -e '/var/db/netmgt/netmgt.sqlite3' ]]; then
 	echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${NETMGT_ADMIN}')" \
 		| /opt/netmgt/manage.py shell
 fi
+
+# Copy all static files to /opt/netmgt/static
+/opt/netmgt/manage.py collectstatic --noinput
+
+# Fix all permissions
+chown -R www:www /opt/netmgt
+chown -R www:www /var/db/netmgt

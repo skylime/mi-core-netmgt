@@ -32,7 +32,7 @@ WSGI_APPLICATION = 'netmgt_web.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.sqlite3',
-		'NAME': '/var/db/netmgt.sqlite3'),
+		'NAME': '/var/db/netmgt.sqlite3',
 	}
 }
 

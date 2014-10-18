@@ -50,13 +50,11 @@ NETMGT_DNS_TOKEN = '${NETMGT_DNS_TOKEN}'
 EOF
 
 # Init django data and create admin user
-/opt/netmgt/manage.py syncdb --noinput
+/opt/netmgt/manage.py migrate --noinput
 
 # Create superadmin user
-if [[ ! -e '/var/db/netmgt/netmgt.sqlite3' ]]; then
-	echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${NETMGT_ADMIN}')" \
-		| /opt/netmgt/manage.py shell
-fi
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${NETMGT_ADMIN}')" \
+	| /opt/netmgt/manage.py shell || true
 
 # Copy all static files to /opt/netmgt/static
 /opt/netmgt/manage.py collectstatic --noinput

@@ -50,7 +50,7 @@ EOF
 /opt/netmgt/manage.py syncdb --noinput
 
 # Create superadmin user
-if [[ ! -e '/var/db/netmgt.sqlite3' ]]; then
-	echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${netmgt_admin}')" \
+if [[ ! -e '/var/db/netmgt/netmgt.sqlite3' ]]; then
+	echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', '${NETMGT_ADMIN}')" \
 		| /opt/netmgt/manage.py shell
 fi

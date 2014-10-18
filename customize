@@ -24,7 +24,7 @@ mkdir -p /opt/local/etc/nginx/ssl
 # Download and extract netmgt to /opt/netmgt
 echo "* Download and extract netmgt to /opt/netmgt"
 mkdir -p /opt/netmgt
-curl -L "https://github.com/wiedi/djang-netmgt/archive/v${NETMGT_VERSION}.tar.gz" | tar xz -C /opt/netmgt --strip-components=1
+curl -L "https://github.com/wiedi/django-netmgt/archive/v${NETMGT_VERSION}.tar.gz" | tar xz -C /opt/netmgt --strip-components=1
 
 # Setup permissions for netmgt folder
 echo "* Setup permissions for netmgt folder"

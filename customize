@@ -34,6 +34,11 @@ chown -R www:www /opt/netmgt
 echo "* Install missing dependencies via pip"
 pip install -r /opt/netmgt/req.txt
 
+# Copy default (basic) netmgt settings
+echo "* Copy default (basic) netmgt settings"
+cp /tmp/netmgt-settings.py /opt/netmgt/netmgt_web/settings.py
+rm /tmp/netmgt-settings.py
+
 # Setup gunicorn
 echo "* Setup gunicorn"
 mkdir -p /opt/local/etc/gunicorn

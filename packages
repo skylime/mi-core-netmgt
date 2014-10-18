@@ -2,3 +2,4 @@
 nginx
 py27-gunicorn
 py27-pip
+py27-sqlite3

@@ -10,7 +10,7 @@ mdata-put netmgt_admin ${NETMGT_ADMIN}
 
 NETMGT_DEFAULT_NAMESERVERS=$(
 	echo 'NETMGT_DEFAULT_NAMESERVERS = [';
-	for nameserver in $(mdata-get netmgt_default_nameservers 1>/dev/null 2>&1); do
+	for nameserver in $(mdata-get netmgt_default_nameservers 2>/dev/null); do
 		echo "'${nameserver}', "
 	done
 	echo ']'

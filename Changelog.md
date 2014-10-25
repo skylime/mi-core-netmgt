@@ -1,5 +1,16 @@
 # Changelog
 
+## 14.2.2
+
+### New
+
+* version update for netmgt. [Thomas Merkel]
+
+### Other
+
+* version bump. [Thomas Merkel]
+* version update of netmgt, fix typo for mdata-get nameservers. [Thomas Merkel]
+
 ## 14.2.1
 
 ### Fix

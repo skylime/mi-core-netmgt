@@ -26,6 +26,11 @@ NETMGT_DNS_TOKEN=${NETMGT_DNS_TOKEN:-$(mdata-get netmgt_dns_token 2>/dev/null)} 
 NETMGT_DNS_TOKEN=$(od -An -N8 -x /dev/random | head -1 | tr -d ' ');
 mdata-put netmgt_dns_token ${NETMGT_DNS_TOKEN}
 
+NETMGT_EXPORT_PREFIX=${NETMGT_EXPORT_PREFIX:-$(mdata-get netmgt_export_prefix 2>/dev/null)} || \
+NETMGT_EXPORT_PREFIX=$(mdata-get sdc:uuid);
+mdata-put netmgt_export_prefix ${NETMGT_EXPORT_PREFIX}
+
+
 cat >> /opt/netmgt/netmgt_web/settings.py <<EOF
 # Static files location
 STATIC_ROOT = '/opt/netmgt/static'
@@ -47,6 +52,7 @@ NETMGT_SOA = {
 ${NETMGT_DEFAULT_NAMESERVERS}
 ${NETMGT_HOSTMASTER}
 NETMGT_DNS_TOKEN = '${NETMGT_DNS_TOKEN}'
+NETMGT_EXPORT_PREFIX = '${NETMGT_EXPORT_PREFIX}'
 EOF
 
 # Init django data and create admin user

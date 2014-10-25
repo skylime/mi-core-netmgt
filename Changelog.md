@@ -1,5 +1,14 @@
 # Changelog
 
+## 14.2.3
+
+### Other
+
+* version update. [Thomas Merkel]
+* version update which supports export prefix. [Thomas Merkel]
+* support NETMGT_EXPORT_PREFIX as mdata. [Thomas Merkel]
+* add template path. [Thomas Merkel]
+
 ## 14.2.2
 
 ### New

@@ -9,6 +9,7 @@ This repository is based on [Joyent mibe](https://github.com/joyent/mibe). Pleas
 - `netmgt_default_nameservers`: list of default nameservers separated by space
 - `netmgt_hostmaster`: email address of hostmaster
 - `netmgt_dns_token`: dns export token
+- `netmgt_export_prefix`: export prefix for zones folder
 
 ## services
 

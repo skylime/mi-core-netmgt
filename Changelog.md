@@ -1,5 +1,13 @@
 # Changelog
 
+## 14.2.4
+
+### Other
+
+* bump image version. [Sebastian Wiedenroth]
+      new netmgt version reverts to the classic django theme
+* version bump for netmgt. [Sebastian Wiedenroth]
+
 ## 14.2.3
 
 ### Other

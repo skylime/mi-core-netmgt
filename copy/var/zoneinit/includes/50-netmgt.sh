@@ -68,3 +68,6 @@ echo "from django.contrib.auth.models import User; User.objects.create_superuser
 # Fix all permissions
 chown -R www:www /opt/netmgt
 chown -R www:www /var/db/netmgt
+
+# Enable gunicorn netmgt service
+svcadm enable svc:/network/gunicorn:netmgt

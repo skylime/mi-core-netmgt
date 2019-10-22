@@ -7,62 +7,44 @@ NETMGT_VERSION='0.0.9'
 PATH=/opt/local/gnu/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
 # Munin plugins
-MUNIN_PLUGIN_SRC='/opt/local/lib/munin/plugins'
-MUNIN_PLUGIN_DST='/opt/local/etc/munin/plugins'
-MUNIN_PLUGINS=(
-	'nginx_request'
-	'nginx_status'
-)
+MUNIN_PLUGINS="
+	nginx_request
+	nginx_status
+"
 
 # Exit if any commands fail
 set -o errexit
 
-# Nginx SSL folder
+echo "* Use default python 3.7"
+pkg_alternatives manual python37
+
 echo "* Create ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
 
-# Download and extract netmgt to /opt/netmgt
 echo "* Download and extract netmgt to /opt/netmgt"
 mkdir -p /opt/netmgt
-curl -L "https://github.com/wiedi/django-netmgt/archive/v${NETMGT_VERSION}.tar.gz" | tar xz -C /opt/netmgt --strip-components=1
+curl -L "https://github.com/wiedi/django-netmgt/archive/v${NETMGT_VERSION}.tar.gz" | gtar xz -C /opt/netmgt --strip-components=1
 
-# Setup permissions for netmgt folder
 echo "* Setup permissions for netmgt folder"
 chown -R www:www /opt/netmgt
 
-# Install missing dependencies via pip
 echo "* Install missing dependencies via pip"
-pip install -r /opt/netmgt/req.txt
+pip3.7 install -r /opt/netmgt/req.txt
 
-# Copy default (basic) netmgt settings
 echo "* Copy default (basic) netmgt settings"
 cp /tmp/netmgt-settings.py /opt/netmgt/netmgt_web/settings.py
 rm /tmp/netmgt-settings.py
 
-# Setup gunicorn
 echo "* Setup gunicorn"
 mkdir -p /opt/local/etc/gunicorn
 svccfg import /tmp/gunicorn.xml
 
-# Activate munin plugins
 echo "* Activate munin plugins"
-for plugin in "${MUNIN_PLUGINS[@]}"; do
-	if [ ! -x ${MUNIN_PLUGIN_SRC}/${plugin} ]; then
-		plugin_src=${plugin%_*}_
-		[ ! -x ${MUNIN_PLUGIN_SRC}/${plugin_src} ] && \
-			plugin_src=${plugin_src%%_*}_
-	else
-		plugin_src=${plugin}
-	fi
-	if [[ -x ${MUNIN_PLUGIN_SRC}/${plugin_src} ]]; then
-		echo "  ${plugin}"
-		ln -sf ${MUNIN_PLUGIN_SRC}/${plugin_src} ${MUNIN_PLUGIN_DST}/${plugin}
-	fi
-done
+/opt/core/bin/munin-node-plugins ${MUNIN_PLUGINS}
 
-# Clean up
+echo "* Cleanup home/admin because of delegate dataset usage"
+rm -rf /home/admin/.[^.]*
+
 echo "* Cleaning up."
 rm -rf /root/*
-
-# Prepare image for provisioning
 sm-prepare-image -y

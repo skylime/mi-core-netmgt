@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '${ALLOWED_HOST}']
 
 # NETMGT
 NETMGT_DEFAULT_TTL = 3600
+NETMGT_DEFAULT_NAMESERVERS_TTL = 86400
 NETMGT_SOA = {
 	'refresh': '2d',
 	'retry':   '15M',
@@ -54,7 +55,7 @@ EOF
 cat <<eof | /opt/netmgt/manage.py shell
 from django.contrib.auth import get_user_model
 user = get_user_model()
-user.objects.filter(username="admin).exists() or \
+user.objects.filter(username="admin").exists() or \
     user.objects.create_superuser("admin", "", "${NETMGT_ADMIN_INITIAL_PW}")
 eof
 

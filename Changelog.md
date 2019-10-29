@@ -1,5 +1,23 @@
 # Changelog
 
+## 18.4.0
+
+### New
+
+* Django-netmgt version bump to 0.0.13 with API and caching support. [Thomas Merkel]
+* Add Lets Encrypt support to nginx configuration file. [Thomas Merkel]
+
+### Fix
+
+* Fix missing NETMGT_DEFAULT_NAMESERVERS_TTL. [Thomas Merkel]
+* Remove dns from the socket name in gunicorn. [Thomas Merkel]
+
+### Other
+
+* Use tooling from core-base to setup netmgt. [Thomas Merkel]
+* Using manifest.json by default. [Thomas Merkel]
+  Implement some tools provided in the core-base 18.4.x, additional cleanup and license updates
+
 ## 14.2.4
 
 ### Other

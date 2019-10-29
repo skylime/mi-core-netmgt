@@ -37,8 +37,8 @@ DATABASES = {
 
 CACHES = {
 	'default': {
-		'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-		'LOCATION': 'core_cache',
+		'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+		'LOCATION': 'MEM',
 	}
 }
 

@@ -39,7 +39,7 @@
       <property_group name='config' type='application'>
         <propval name='app' type='astring' value='netmgt_web.wsgi:application'/>
         <propval name='group' type='astring' value='www'/>
-        <propval name='listen' type='astring' value='unix:/tmp/netmgt_dns.sock'/>
+        <propval name='listen' type='astring' value='unix:/tmp/netmgt.sock'/>
         <propval name='user' type='astring' value='www'/>
         <propval name='worker' type='integer' value='1'/>
       </property_group>

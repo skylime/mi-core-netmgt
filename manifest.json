@@ -1,11 +1,11 @@
 {
   "name": "core-netmgt",
-  "version": "18.4.0",
+  "version": "20.4.0",
   "description": "core.io Network Management Tool",
   "organization": "SkyLime",
   "brand": "Instance",
   "homepage": "https://github.com/skylime/mi-core-netmgt",
-  "base": "208f9314-29cf-4bec-9d8b-c0697d00c929",
+  "base": "b17e3cc1-5993-4af9-9e5e-70653fa856f6",
   "customer_metadata": {
     "admin_authorized_keys": {
       "type": "text",

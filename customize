@@ -15,8 +15,8 @@ MUNIN_PLUGINS="
 # Exit if any commands fail
 set -o errexit
 
-echo "* Use default python 3.7"
-pkg_alternatives manual python37
+echo "* Use default python 3.8"
+pkg_alternatives manual python38
 
 echo "* Create ssl folder"
 mkdir -p /opt/local/etc/nginx/ssl
@@ -29,7 +29,7 @@ echo "* Setup permissions for netmgt folder"
 chown -R www:www /opt/netmgt
 
 echo "* Install missing dependencies via pip"
-pip3.7 install -r /opt/netmgt/req.txt
+pip install -r /opt/netmgt/req.txt
 
 echo "* Copy default (basic) netmgt settings"
 cp /tmp/netmgt-settings.py /opt/netmgt/netmgt_web/settings.py

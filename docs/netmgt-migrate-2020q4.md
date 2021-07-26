@@ -36,7 +36,7 @@ below to convert your data.
 
 ```
 	cd /var/db/netmgt/
-	jq '.' fullexport.json | gsed -i 's/"ttl": ""/"ttl": null/g' \
+	jq '.' fullexport.json | gsed 's/"ttl": ""/"ttl": null/g' \
 	                       > fullexport-cleaned.json
 ```
 

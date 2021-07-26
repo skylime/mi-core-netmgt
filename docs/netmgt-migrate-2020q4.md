@@ -44,5 +44,6 @@ below to convert your data.
 
 ```
 	> /var/db/netmgt/netmgt.sqlite3
+	/opt/netmgt/manage.py migrate
 	/opt/netmgt/manage.py loaddata /var/db/netmgt/fullexport-cleaned.json
 ```

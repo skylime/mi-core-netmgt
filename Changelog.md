@@ -1,5 +1,16 @@
 # Changelog
 
+## 20.4.0
+
+### New
+
+* Upgrade to the latest core-base LTS 20.4 image and switch to Python 3.8. [Thomas Merkel]
+* Support IPv6 localhost. [Thomas Merkel]
+
+### Fix
+
+* Add missing migrate command. [Thomas Merkel]
+
 ## 18.4.0
 
 ### New
